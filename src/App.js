@@ -3,26 +3,21 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 function App() {
-  const [backgroundColor, setBackgroundColor] = useState('#ffffff');
+  const [backgroundColor, setBackgroundColor] = useState('green');
 
   useEffect(() => {
     // Change background color when the component mounts
-    setBackgroundColor(getRandomColor());
+    toggleColor();
   }, []);
+
+  const toggleColor = () => {
+    setBackgroundColor((prevColor) => (prevColor === 'green' ? 'red' : 'green'));
+  };
 
   const handleColorChange = () => {
     // Change background color when the button is clicked
-    setBackgroundColor(getRandomColor());
+    toggleColor();
   };
 
   return (
